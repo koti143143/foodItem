@@ -17,3 +17,6 @@ server code developed using java.
 Currently using java8
 
 
+Once depoyed server side code you can access swager for documentation on services.
+
+http://localhost:8080/swagger-ui/
