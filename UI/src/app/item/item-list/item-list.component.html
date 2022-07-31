@@ -1,0 +1,65 @@
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Custom Search</h2>
+    </div>
+    <form (ngSubmit) ="search()">
+    <div class="panel-body">
+      <table id="temp" class="table table-striped table-bordered table-sm row-border hover" cellspacing="0"
+        width="100%" style="table-layout:fixed">
+        <tbody>
+          <td style="width:10%"><label for="name">Category</label>
+            <input style="width: -webkit-fill-available" type="text" id="category" name="category" [(ngModel)] ="searchModel.category"/>
+          </td>
+          <td style="width:20%"><label for="name:">Orders</label>
+            <input style="width: -webkit-fill-available" type="text" id="orders" name="orders" [(ngModel)] = "searchModel.orders"/>
+          </td>
+          <td style="width:20%"><label for="name">Ingredients</label>
+            <input style="width: -webkit-fill-available" type="text" id="ingredients" name="ingredients" [(ngModel)] = "searchModel.ingredients"/></td>
+          <td style="width:10%"><label for="name">Include Ingredients</label>
+            <input type="checkbox" id="include" name="include" [(ngModel)] = "searchModel.include"/></td>
+          <td style="width:30%"><label for="name">Instructions</label>
+            <input style="width: -webkit-fill-available" type="text" id= "instructions" name="instructions" [(ngModel)] = "searchModel.instructions"/></td>
+          <td style="width:10%"><button style='margin-top:16px' class="btn btn-success">Search</button></td>
+        </tbody>
+
+      </table>
+    </div>
+  </form>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Items List</h2>
+    </div>
+    <div class="panel-body">
+      <table id="itemtable" class="table table-striped table-bordered table-sm row-border hover" cellspacing="0"
+        width="100%">
+
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Count</th>
+            <th>Ingredients</th>
+            <th>Instructions</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items | async">
+            <td>{{item.name}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.count}}</td>
+            <td>{{item.ingredients}}</td>
+            <td>{{item.instructions}}</td>
+            <td><button style='margin-right:16px' (click)="deleteItem(item.id)" class="btn btn-danger">Delete</button>
+              <button style='margin-right:16px' (click)="editItem(item.id)" class="btn btn-success"
+                style="margin-left: 10px">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
